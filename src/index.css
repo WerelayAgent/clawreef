@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #071518;
+    --bg-card: #0b2226;
+    --bg-card-hover: #0f2e34;
+    --border-reef: #16484e;
+    --border-reef-bright: #206d76;
+    --accent-teal: #14b8a6;
+    --accent-cyan: #06b6d4;
+    --accent-coral: #f97316;
+    --accent-gold: #eab308;
+    --text-primary: #f1f8f8;
+    --text-secondary: #94a9ab;
+    --text-muted: #5e7b80;
+  }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #071518;
+}
+::-webkit-scrollbar-thumb {
+  background: #16484e;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2dd4bf;
+}
+
+/* Oceanic Background Grid & Radial Glows */
+.reef-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(20, 184, 166, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 184, 166, 0.05) 1px, transparent 1px);
+}
+
+.tide-glow {
+  background: radial-gradient(circle at 50% 20%, rgba(20, 184, 166, 0.15), rgba(7, 21, 24, 0) 70%);
+}
+
+.tide-glow-coral {
+  background: radial-gradient(circle at 80% 60%, rgba(249, 115, 22, 0.1), rgba(7, 21, 24, 0) 60%);
+}
+
+/* Animations */
+@keyframes tide-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1.5deg);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-tide-float {
+  animation: tide-float 6s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+.animate-radar {
+  animation: radar-sweep 4s linear infinite;
+}
+
+/* Scanline effect for Scope terminal */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+}
