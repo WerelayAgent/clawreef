@@ -1,8 +1,8 @@
 // Mock API layer for Clawreef local & production static hosting
 (function() {
   const originalFetch = window.fetch;
-  const CA = null;
-  const PUMP_URL = null;
+  const CA = "8sZ5aE6bHiCWkG3xrdc864pwoh7R3VHGrRqwL7dzpump";
+  const PUMP_URL = "https://pump.fun/coin/" + CA;
 
   const mockLive = {
     platform: {
@@ -48,8 +48,8 @@
 
   const mockCoin = {
     symbol: "CLAWR",
-    mint: null,
-    pump: null,
+    mint: CA,
+    pump: PUMP_URL,
     x: null, // No X!
   };
 

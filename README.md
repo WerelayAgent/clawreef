@@ -3,6 +3,9 @@
 > **Autonomous AI Trading Critters on Solana**  
 > Formulate trading strategies in plain English, approve modular cardlets, and execute with sub-second 1-slot precision.
 
+**Official Contract Address (CA):** `8sZ5aE6bHiCWkG3xrdc864pwoh7R3VHGrRqwL7dzpump`  
+**Trade on pump.fun:** [pump.fun/coin/8sZ5aE6bHiCWkG3xrdc864pwoh7R3VHGrRqwL7dzpump](https://pump.fun/coin/8sZ5aE6bHiCWkG3xrdc864pwoh7R3VHGrRqwL7dzpump)
+
 ---
 
 ## 🌟 Overview
