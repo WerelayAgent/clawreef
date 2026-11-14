@@ -1,18 +1,562 @@
-<!doctype html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2314b8a6'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clawreef | 5 Autonomous AI Trading Critters on Solana</title>
-    <meta name="description" content="Autonomous trading critters on Solana. Natural language to trading rule cardlets. 1-slot latency execution, 50% hourly buyback & burn for $REEF." />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-[#071518] text-[#f1f8f8] antialiased selection:bg-[#14b8a6]/30 selection:text-[#2dd4bf]">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="js">
+<head>
+  <meta charset="utf-8">
+  <script src="/js/mock-api.js"></script>
+  <script src="/js/theme.js?v=R1"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Clawreef · Five Fable 5.2 critters that trade for you</title>
+  <link rel="canonical" href="https://clawreef.com/">
+  <meta name="description" content="Clawreef: five little orange critters that trade pump.fun coins for you. Dig hunts, Tide copies, Pinch snipes, Shell guards, Scuttle scouts. Powered by Fable 5.2.">
+  <meta name="theme-color" content="#2B746F">
+  <meta property="og:title" content="Clawreef · Five Fable 5.2 critters that trade for you">
+  <meta property="og:description" content="Dig hunts, Tide copies, Pinch snipes, Shell guards, Scuttle scouts. Powered by Claude Fable 5.2. Every fill timed in slots.">
+  <meta property="og:image" content="/art/og.jpg?v=fable1">
+  <meta property="og:url" content="https://clawreef.com/">
+  <meta property="og:site_name" content="Clawreef">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/art/icon-32.png?v=k5">
+  <link rel="icon" type="image/png" sizes="64x64" href="/art/icon-64.png?v=k5">
+  <link rel="apple-touch-icon" href="/art/icon-180.png?v=k5">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="preload" href="/fonts/anek-latin.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="preload" href="/fonts/departure-mono.woff2" as="font" type="font/woff2" crossorigin="">
+
+  <link rel="stylesheet" href="/css/clawdies.css?v=k5">
+  <link rel="stylesheet" href="/css/hero3d.css?v=T2">
+  <link rel="stylesheet" href="/css/landing.css?v=T1">
+  <link rel="stylesheet" href="/css/proof.css?v=T1">
+
+  <script src="/js/app.js?v=T2" defer=""></script>
+  <script src="/js/tide.js?v=T1" defer=""></script>
+  <script src="/js/slotchart.js?v=R1" defer=""></script>
+  <script src="/js/landing.js?v=T4" defer=""></script>
+  <script type="module" src="/js/hero3d.js?v=T2"></script>
+  <script src="/js/proof.js?v=T1" defer=""></script>
+</head>
+<body class="landing has-tabbar" data-notop="true">
+  <!-- Top Navigation Bar -->
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="/art/brand-mark.png?v=k5" alt="" width="58" height="34">
+        <b>clawreef</b>
+      </a>
+      <nav class="nav">
+        <a href="#hero3d" class="ext">App</a>
+        <a href="#squad" class="">Meet the squad</a>
+        <a href="#workflow" class="">Workflow</a>
+        <a href="#best" class="">Receipts</a>
+        <a href="#burn-sec" class="">Fees</a>
+        <a href="#shapes-sec" class="">Customizer</a>
+      </nav>
+      <button type="button" class="theme-t" title="Light / dark" aria-label="Switch light and dark" onclick="if(window.CLAWDIES&&CLAWDIES.setTheme)CLAWDIES.setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')">
+        <i></i>
+      </button>
+      <div class="coinbits">
+        <button type="button" class="pill ca" title="$REEF contract address: click to copy" onclick="navigator.clipboard.writeText('AfCdvu9Mq4vadfzEGYxcqH1JzWG9UwnMdLrZ9fggpump');if(window.CLAWDIES&&CLAWDIES.toast)CLAWDIES.toast('$REEF address copied')">
+          <b>$REEF</b>
+          <span>AfCd…pump</span>
+        </button>
+        <a class="xbtn" href="https://pump.fun/coin/AfCdvu9Mq4vadfzEGYxcqH1JzWG9UwnMdLrZ9fggpump" target="_blank" rel="noopener" title="Trade $REEF on pump.fun">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </a>
+      </div>
+      <div class="who" id="who">
+        <button class="btn sm ink" onclick="if(window.CLAWDIES&&CLAWDIES.signSheet)CLAWDIES.signSheet()">Sign in</button>
+      </div>
+    </div>
+  </header>
+
+  <canvas class="tide" aria-hidden="true" width="241" height="151"></canvas>
+
+  <main>
+    <!-- THE TIDE POOL STATION -->
+    <section class="hero wet">
+      <div class="hero-top">
+        <div class="hero-copy">
+          <div class="con-line rise" style="--i:0">
+            <span class="led"></span>
+            <b>CL-5</b>
+            <span>five critters, one squad</span>
+            <span class="wide-only">Fable 5.2 brain</span>
+          </div>
+          <h1 class="rise" style="--i:1">Five little critters <em>that trade for you.</em></h1>
+          <p class="lead rise" style="--i:2">Dig hunts, Tide copies, Pinch snipes, Shell guards and Scuttle scouts, all from your own squad wallet. Tell them what you want in plain words: their brain runs on Claude Fable 5.2.</p>
+          <div class="cta rise" style="--i:3">
+            <a class="btn ink lg" href="#hero3d">Open the app</a>
+            <a class="btn lg ghost" href="#hero3d" id="talk-go">Talk to the squad</a>
+            <span class="claude-tag"><i></i>Powered by Fable 5.2</span>
+          </div>
+        </div>
+
+        <aside class="console hero-read rise" style="--i:4" aria-label="The squads right now">
+          <div class="con-h"><span>Squad readout</span><span class="con-live"><i></i>live</span></div>
+          <div class="read" id="live">
+            <div><div class="k">Squads awake</div><div class="v">142</div><div class="s">signed in</div></div>
+            <div><div class="k">Copies filled</div><div class="v">28,420</div><div class="s">on the live market</div></div>
+            <div><div class="k">Launches</div><div class="v">2,588</div><div class="s">in the last 2 h</div></div>
+            <div><div class="k">Bought back</div><div class="v">0.318</div><div class="s">SOL, then burned</div></div>
+          </div>
+          <div class="con-f"><span>Brain</span><b>Fable 5.2</b><span>Fills</span><b>slot-timed</b></div>
+        </aside>
+      </div>
+
+      <!-- THE 3D VOXEL CRITTER STAGE (Island + Three.js) -->
+      <div class="hero-room hero-3d" id="hero3d" data-layout="row" data-who="hunter" style="--who: #FF7A1A;">
+        <div class="h3d-word" id="h3d-word" aria-hidden="true"><span>DIGGING</span></div>
+        <div class="h3d-island" aria-hidden="true"><canvas class="island" aria-hidden="true" width="233" height="28"></canvas></div>
+        <div class="h3d-stage" data-stage=""></div>
+        <div class="say h3d-say" data-say="" style="left: 510px; top: 0.5px; --tail: 210px;">
+          <b data-say-who="" style="color: rgb(255, 122, 26);">Dig</b>
+          <span data-say-text="">Hi! I'm Dig, the lead of this squad. I find wallets and devs worth following, with the evidence. Click any of us to say hi, or write to me below!</span>
+        </div>
+        <div class="h3d-picks">
+          <button type="button" data-pick="copy"><b>Tide</b><i>copies</i></button>
+          <button type="button" data-pick="sniper"><b>Pinch</b><i>snipes</i></button>
+          <button type="button" data-pick="hunter" class="on"><b>Dig</b><i>hunts</i></button>
+          <button type="button" data-pick="guard"><b>Shell</b><i>guards</i></button>
+          <button type="button" data-pick="scout"><b>Scuttle</b><i>scouts</i></button>
+        </div>
+        <form class="talk h3d-talk" data-talk="" autocomplete="off">
+          <span class="h3d-to">to</span>
+          <input maxlength="600" placeholder="Write to Dig…" aria-label="Write to Dig" autocomplete="off">
+          <button class="btn ink" type="submit">Send</button>
+        </form>
+      </div>
+
+      <!-- Live Operation Tape Ticker -->
+      <div class="tape" aria-label="What squads are doing right now">
+        <div class="tape-k"><span class="led"></span><span class="wide-only">Operation log</span><span class="phone-only">Live</span></div>
+        <div class="tape-run">
+          <div class="tape-track idle" id="tape">
+            <span class="tape-i">
+              <span class="tape-t">Quiet right now. The critters react the moment a squad copies, snipes or exits.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 · THE SQUAD: Five critters. One job each. -->
+    <section class="wrap sec reveal" id="squad">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><b>01</b> · The squad</div>
+          <h2>Five critters. <em>One job each.</em></h2>
+        </div>
+      </div>
+      <div class="select" id="select">
+        <div class="select-stage">
+          <div class="select-art" id="sel-art">
+            <div class="st st-hunter on" data-role="hunter" style="--c:#FF7A1A">
+              <div class="st-clawd" data-clawd="hunter"></div>
+              <div class="st-chips">
+                <div class="chip-ui" style="--i:0"><i></i><span>Launch buyer</span><b>+0.31 SOL a copy</b></div>
+                <div class="chip-ui" style="--i:1"><i></i><span>Copies checked</span><b>41 · 21 days</b></div>
+                <div class="chip-ui" style="--i:2"><i></i><span>Still trading</span><b>yes, 3 h ago</b></div>
+              </div>
+            </div>
+            <div class="st st-copy" data-role="copy" style="--c:#2F7CFF">
+              <div class="st-clawd" data-clawd="copy"></div>
+              <div class="st-chips">
+                <div class="chip-ui" style="--i:0"><i></i><span>Copied a launch buy</span><b>1 slot after</b></div>
+                <div class="chip-ui" style="--i:1"><i></i><span>Size</span><b>0.1 SOL</b></div>
+                <div class="chip-ui" style="--i:2"><i></i><span>One buy per coin</span><b>per card</b></div>
+              </div>
+            </div>
+            <div class="st st-sniper" data-role="sniper" style="--c:#FF3D5E">
+              <div class="st-clawd" data-clawd="sniper"></div>
+              <div class="st-chips">
+                <div class="chip-ui" style="--i:0"><i></i><span>Dev armed</span><b>next launch</b></div>
+                <div class="chip-ui" style="--i:1"><i></i><span>Bought</span><b>in the launch slot</b></div>
+                <div class="chip-ui" style="--i:2"><i></i><span>Plan</span><b>the first 35 % dip</b></div>
+              </div>
+            </div>
+            <div class="st st-guard" data-role="guard" style="--c:#12B76A">
+              <div class="st-clawd" data-clawd="guard"></div>
+              <div class="st-chips">
+                <div class="chip-ui" style="--i:0"><i></i><span>Exit at 2x</span><b>sold</b></div>
+                <div class="chip-ui" style="--i:1"><i></i><span>Dev is selling</span><b>out, −12 %</b></div>
+                <div class="chip-ui" style="--i:2"><i></i><span>Time exit</span><b>1 h</b></div>
+              </div>
+            </div>
+            <div class="st st-scout" data-role="scout" style="--c:#7B5CFA">
+              <div class="st-clawd" data-clawd="scout"></div>
+              <div class="st-chips">
+                <div class="chip-ui" style="--i:0"><i></i><span>Dev record</span><b>14 launches, 3 bonded</b></div>
+                <div class="chip-ui" style="--i:1"><i></i><span>Launch slot</span><b>9 buyers</b></div>
+                <div class="chip-ui" style="--i:2"><i></i><span>Verdict</span><b>careful</b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="select-card swap" id="sel-card" style="--c: #FF7A1A;">
+            <div class="role-k" id="sel-k">Finds</div>
+            <h3 id="sel-name">Dig</h3>
+            <p id="sel-what">Wallets and devs worth following, from 28 days of every launch on pump.fun.</p>
+            <ul id="sel-does">
+              <li>Scores every launch buyer on what copying them made, after costs</li>
+              <li>Checks its own picks on weeks it never saw</li>
+              <li>Shows the rugs, the bots and who still trades</li>
+            </ul>
+            <div class="select-foot">
+              <span class="live" id="sel-live"><i></i>213K wallets scored</span>
+              <a class="btn sm" id="sel-go" href="#hero3d">Talk to Dig →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="select-tabs" id="sel-tabs" role="tablist">
+          <button class="tab on auto" role="tab" style="--c:#FF7A1A">
+            <img src="/art/clawdie-hunter.png" alt="">
+            <span><b>Dig</b><i>Finds</i></span>
+            <em class="bar"></em>
+          </button>
+          <button class="tab auto" role="tab" style="--c:#2F7CFF">
+            <img src="/art/clawdie-copy.png" alt="">
+            <span><b>Tide</b><i>Copies</i></span>
+            <em class="bar"></em>
+          </button>
+          <button class="tab auto" role="tab" style="--c:#FF3D5E">
+            <img src="/art/clawdie-sniper.png" alt="">
+            <span><b>Pinch</b><i>Snipes</i></span>
+            <em class="bar"></em>
+          </button>
+          <button class="tab auto" role="tab" style="--c:#12B76A">
+            <img src="/art/clawdie-guard.png" alt="">
+            <span><b>Shell</b><i>Guards</i></span>
+            <em class="bar"></em>
+          </button>
+          <button class="tab auto" role="tab" style="--c:#7B5CFA">
+            <img src="/art/clawdie-scout.png" alt="">
+            <span><b>Scuttle</b><i>Scouts</i></span>
+            <em class="bar"></em>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · HOW IT WORKS: Say it. Approve it. Watch it. -->
+    <section class="wrap sec reveal" id="workflow">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><b>02</b> · How it works, an example</div>
+          <h2>Say it. <em>Approve it.</em> Watch it.</h2>
+        </div>
+        <a class="more" href="#squad">The details →</a>
+      </div>
+      <div class="moment">
+        <div class="frame">
+          <div class="frame-n">1</div>
+          <div class="frame-t">Say what you want</div>
+          <div class="frame-body chatlet">
+            <div class="b me">copy the top 10 hunter wallets with 0.1 sol</div>
+            <div class="b them">
+              <img src="/art/clawdie-hunter.png" alt="">
+              Made a card: 10 wallets, 0.1 SOL a copy, launch buys only, out at 2x / −50 % / 1 h. Switch it on when you're ready.
+            </div>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="frame-n">2</div>
+          <div class="frame-t">Approve the card</div>
+          <div class="frame-body">
+            <div class="cardlet">
+              <div class="cardlet-h">
+                <img src="/art/clawdie-copy.png" alt="">
+                <b>Copy · Dig's top 10</b>
+                <span class="switch auto" aria-hidden="true"></span>
+              </div>
+              <dl>
+                <dt>Wallets</dt><dd>10</dd>
+                <dt>Size</dt><dd>0.1 SOL a copy</dd>
+                <dt>Only</dt><dd>launch buys ≤ 3 s</dd>
+                <dt>Exits</dt><dd>2x · −50 % · 1 h</dd>
+                <dt>Runs</dt><dd>by itself</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="frame-n">3</div>
+          <div class="frame-t">Watch it work</div>
+          <div class="frame-body evlist">
+            <div class="ev"><img src="/art/clawdie-copy.png" alt=""><span>Copied a launch buy with 0.1 SOL, <b>1 slot</b> after theirs.</span></div>
+            <div class="ev"><img src="/art/clawdie-guard.png" alt=""><span>Reached 2x. Shell took the exit.</span></div>
+            <div class="ev"><img src="/art/clawdie-guard.png" alt=""><span>Closed: <b class="good">+0.094 SOL</b> after costs.</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="moment-note">An example of the flow. Get your squad a Clawreef wallet (or bring your own), fund it, approve a card: the squad trades and shows the slot every fill landed in. Withdraw or export the key whenever you want, each time confirmed with your own Phantom.</p>
+    </section>
+
+    <!-- 03 · HUNTER'S EVIDENCE: Who is worth following, with the receipts. -->
+    <section class="wrap sec reveal" id="best">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><b>03</b> · Dig's best find right now</div>
+          <h2>Who is worth following, <em>with the receipts.</em></h2>
+        </div>
+        <a class="more" href="#squad">The whole list →</a>
+      </div>
+      <div class="dossier">
+        <div class="dossier-top">
+          <img src="/art/clawdie-hunter.png" alt="" width="58" height="58">
+          <div class="who">
+            <div class="kicker" id="best-k">Launch buyer</div>
+            <div class="addr" id="best-w">6KRoz1KFSMkzm7TKZVUT96mkfie187M45sx5JG9aVwvG</div>
+          </div>
+          <a class="btn ink" id="best-go" href="#hero3d">See the evidence</a>
+        </div>
+        <div class="dossier-body">
+          <div class="dossier-num">
+            <div class="kicker">Per 1-SOL copy</div>
+            <div class="big good" id="best-v"><span class="n">+0.74</span><span class="u">SOL</span></div>
+            <p>Copying its launch buys with 1 SOL each, filled at the first trade after their slot, after every cost.</p>
+            <dl class="receipt" id="best-rc">
+              <div><dt>Total, 21 days</dt><dd><b class="good">+10.41 SOL</b></dd></div>
+              <div><dt>Best copy</dt><dd><i>PARR </i><b class="good">+0.94</b><i> · 3.45x</i></dd></div>
+              <div><dt>Worst copy</dt><dd><i>ELEKTRO </i><b class="bad">−0.55</b><i> · 1.82x</i></dd></div>
+              <div><dt>Its buy lands</dt><dd><b>2.7 s</b><i> after launch</i></dd></div>
+            </dl>
+          </div>
+          <div class="sc res best-res" id="best-chart">
+            <div class="sc-layer in">
+              <div class="sc-top">
+                <div class="sc-leg">
+                  <b>14 copies</b>
+                  <span class="good">+10.41 SOL in total</span>
+                  <span>12 won · 2 lost</span>
+                  <span class="muted">click a copy to chart it</span>
+                </div>
+              </div>
+              <div class="sc-stage rc">
+                <svg class="rc-svg rc-wait" role="img" aria-label="14 copies and the running total" viewBox="0 0 824 310" width="824" height="310">
+                  <defs>
+                    <linearGradient id="rcge5irl4" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" style="stop-color: var(--amber)" stop-opacity=".12"></stop>
+                      <stop offset="100%" style="stop-color: var(--amber)" stop-opacity="0"></stop>
+                    </linearGradient>
+                  </defs>
+                  <g>
+                    <line x1="0" x2="0" y1="10" y2="288" class="rc-guide" style="opacity: 0;"></line>
+                    <text x="40.7" y="303" class="rc-date" text-anchor="middle">28 Oct</text>
+                    <text x="94.3" y="303" class="rc-date" text-anchor="middle">29 Oct</text>
+                    <text x="147.9" y="303" class="rc-date" text-anchor="middle">31 Oct</text>
+                    <text x="201.5" y="303" class="rc-date" text-anchor="middle">1 Nov</text>
+                    <text x="362.2" y="303" class="rc-date" text-anchor="middle">2 Nov</text>
+                    <text x="469.3" y="303" class="rc-date" text-anchor="middle">3 Nov</text>
+                    <text x="522.9" y="303" class="rc-date" text-anchor="middle">5 Nov</text>
+                    <text x="576.5" y="303" class="rc-date" text-anchor="middle">6 Nov</text>
+                    <text x="630.0" y="303" class="rc-date" text-anchor="middle">7 Nov</text>
+                    <text x="683.6" y="303" class="rc-date" text-anchor="middle">8 Nov</text>
+                    <text x="737.2" y="303" class="rc-date" text-anchor="middle">10 Nov</text>
+
+                    <line x1="14" y1="107.4" x2="764" y2="107.4" class="rc-grid"></line>
+                    <text x="816" y="110.9" class="rc-ax" text-anchor="end">+5.0</text>
+                    <line x1="14" y1="38.8" x2="764" y2="38.8" class="rc-grid"></line>
+                    <line x1="14" y1="176" x2="764" y2="176" class="rc-zero"></line>
+                    <text x="816" y="179.5" class="rc-ax" text-anchor="end">0</text>
+
+                    <text x="14" y="18" class="rc-lane" text-anchor="start">RUNNING TOTAL · SOL</text>
+                    <text x="14" y="192" class="rc-lane" text-anchor="start">EACH COPY · SOL</text>
+
+                    <path d="M14.0,176.0L40.8,163.1L94.4,170.6L147.9,157.7L201.5,144.8L255.1,131.9L308.6,119.0L362.2,106.1L415.8,93.3L469.4,80.4L522.9,84.7L576.5,71.8L630.1,58.9L683.6,46.0L737.2,33.1L737.2,176.0L14,176.0Z" fill="url(#rcge5irl4)" class="rc-area"></path>
+                    <path d="M14.0,176.0L40.8,163.1L94.4,170.6L147.9,157.7L201.5,144.8L255.1,131.9L308.6,119.0L362.2,106.1L415.8,93.3L469.4,80.4L522.9,84.7L576.5,71.8L630.1,58.9L683.6,46.0L737.2,33.1" class="rc-line" style="--len: 744;"></path>
+                    <line x1="14" y1="248.8" x2="764" y2="248.8" class="rc-zero"></line>
+
+                    <rect x="32.8" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:200ms"></rect>
+                    <text x="40.8" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="86.3" y="248.8" width="16" height="22.1" rx="2.5" class="rc-bar dn" style="--d:245ms"></rect>
+                    <text x="94.3" y="281" class="rc-val dn" text-anchor="middle">−0.55</text>
+                    <rect x="139.9" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:290ms"></rect>
+                    <text x="147.9" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="193.5" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:335ms"></rect>
+                    <text x="201.5" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="247.1" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:380ms"></rect>
+                    <text x="255.1" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="300.6" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:425ms"></rect>
+                    <text x="308.6" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="354.2" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:470ms"></rect>
+                    <text x="362.2" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="407.8" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:515ms"></rect>
+                    <text x="415.8" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="461.4" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:560ms"></rect>
+                    <text x="469.4" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="514.9" y="248.8" width="16" height="12.8" rx="2.5" class="rc-bar dn" style="--d:605ms"></rect>
+                    <text x="522.9" y="271.7" class="rc-val dn" text-anchor="middle">−0.32</text>
+                    <rect x="568.5" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:650ms"></rect>
+                    <text x="576.5" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="622.1" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:695ms"></rect>
+                    <text x="630.1" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="675.6" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:740ms"></rect>
+                    <text x="683.6" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+                    <rect x="729.2" y="211" width="16" height="37.8" rx="2.5" class="rc-bar up" style="--d:785ms"></rect>
+                    <text x="737.2" y="207" class="rc-val up" text-anchor="middle">+0.94</text>
+
+                    <circle cx="40.8" cy="163.1" r="5" class="rc-node up" style="--d:150ms"></circle>
+                    <circle cx="94.4" cy="170.6" r="5" class="rc-node dn" style="--d:195ms"></circle>
+                    <circle cx="147.9" cy="157.7" r="5" class="rc-node up" style="--d:240ms"></circle>
+                    <circle cx="201.5" cy="144.8" r="5" class="rc-node up" style="--d:285ms"></circle>
+                    <circle cx="255.1" cy="131.9" r="5" class="rc-node up" style="--d:330ms"></circle>
+                    <circle cx="308.6" cy="119.0" r="5" class="rc-node up" style="--d:375ms"></circle>
+                    <circle cx="362.2" cy="106.1" r="5" class="rc-node up" style="--d:420ms"></circle>
+                    <circle cx="415.8" cy="93.3" r="5" class="rc-node up" style="--d:465ms"></circle>
+                    <circle cx="469.4" cy="80.4" r="5" class="rc-node up" style="--d:510ms"></circle>
+                    <circle cx="522.9" cy="84.7" r="5" class="rc-node dn" style="--d:555ms"></circle>
+                    <circle cx="576.5" cy="71.8" r="5" class="rc-node up" style="--d:600ms"></circle>
+                    <circle cx="630.1" cy="58.9" r="5" class="rc-node up" style="--d:645ms"></circle>
+                    <circle cx="683.6" cy="46.0" r="5" class="rc-node up" style="--d:690ms"></circle>
+                    <circle cx="737.2" cy="33.1" r="5" class="rc-node up" style="--d:735ms"></circle>
+
+                    <g class="rc-tag up" transform="translate(768,33.1)">
+                      <rect x="0" y="-10" width="52" height="20" rx="6"></rect>
+                      <text x="26" y="4" text-anchor="middle">+10.41</text>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cells" id="best-facts">
+          <div><div class="k">Copies</div><div class="v">14</div></div>
+          <div><div class="k">Reached 2x</div><div class="v">86 %</div></div>
+          <div><div class="k">Rugs</div><div class="v">0 %</div></div>
+          <div><div class="k">Active</div><div class="v">3/7 d</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · MAKE THEM YOURS: Five critters. Any colour. Your names. -->
+    <section class="wrap sec reveal" id="shapes-sec">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><b>04</b> · Make them yours</div>
+          <h2>Five critters. <em>Any colour.</em> Your names.</h2>
+        </div>
+        <a class="more" href="#squad">Dress your squad →</a>
+      </div>
+      <div class="shapes" id="shapes"></div>
+    </section>
+
+    <!-- 05 · BUYBACK + BURN: Every hour, fees buy back $REEF and burn it. -->
+    <section class="wrap sec reveal" id="burn-sec">
+      <div class="payback">
+        <div class="kicker"><b>05</b> · Buyback + burn</div>
+        <h2>Every hour, fees buy back <em>$REEF and burn it.</em></h2>
+        <div class="flow" aria-hidden="true">
+          <div class="node"><span>Every trade</span><b>the squad makes</b></div>
+          <i class="wire"></i>
+          <div class="node amber"><span id="f-fee">1 % fee</span><b id="f-hold">free if you hold 1M+ $REEF</b></div>
+          <i class="wire"></i>
+          <div class="node"><span id="f-share">Buy back $REEF</span><b>50 % of the fees + 50 % of the creator fees</b></div>
+          <i class="wire"></i>
+          <div class="node"><span id="f-every">Every 60 min</span><b>burned for good</b></div>
+        </div>
+        <div class="cells" id="money">
+          <div><div class="k">Fees</div><div class="v">0.636</div><div class="s">SOL from 1,840 trades</div></div>
+          <div><div class="k">Buyback half</div><div class="v">0.318</div><div class="s">SOL (50 %)</div></div>
+          <div><div class="k">Bought back</div><div class="v">0.318</div><div class="s">SOL bought back</div></div>
+          <div><div class="k">Burned</div><div class="v">5,056,752</div><div class="s">$REEF burned</div></div>
+        </div>
+        <div class="row" style="justify-content:center;margin-top:26px">
+          <a class="btn ink" href="#hero3d">The ledger</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <div class="brandline">Five little critters that trade for you.</div>
+          <p class="muted" style="margin-top:10px;max-width:380px">Dig, Tide, Pinch, Shell and Scuttle: they hunt, copy, snipe, guard and scout from your own squad wallet. Powered by Fable 5.2.</p>
+        </div>
+        <div>
+          <h4>Squad</h4>
+          <a href="#hero3d">My squad</a>
+          <a href="#hero3d">Clawreef Scope</a>
+          <a href="#squad">Dig</a>
+          <a href="#squad">Tide</a>
+          <a href="#squad">Pinch</a>
+          <a href="#squad">Shell</a>
+          <a href="#squad">Scuttle</a>
+        </div>
+        <div>
+          <h4>Money</h4>
+          <a href="#workflow">Wallet</a>
+          <a href="#workflow">Grind a REEF wallet</a>
+          <a href="#burn-sec">Fees and buyback</a>
+          <a href="#live">Status</a>
+        </div>
+        <div>
+          <h4>Read</h4>
+          <a href="#workflow">Docs</a>
+          <a href="#workflow">Terms</a>
+          <a href="#workflow">Privacy</a>
+        </div>
+        <div id="foot-follow">
+          <h4>$REEF</h4>
+          <a href="https://pump.fun/coin/AfCdvu9Mq4vadfzEGYxcqH1JzWG9UwnMdLrZ9fggpump" target="_blank" rel="noopener">Follow Community</a>
+          <span class="ca-line" id="foot-ca" title="AfCdvu9Mq4vadfzEGYxcqH1JzWG9UwnMdLrZ9fggpump" onclick="navigator.clipboard.writeText('AfCdvu9Mq4vadfzEGYxcqH1JzWG9UwnMdLrZ9fggpump');if(window.CLAWDIES&&CLAWDIES.toast)CLAWDIES.toast('$REEF address copied')">
+            <b>$REEF</b> AfCd…pump · copy
+          </span>
+          <a href="https://pump.fun/coin/AfCdvu9Mq4vadfzEGYxcqH1JzWG9UwnMdLrZ9fggpump" target="_blank" rel="noopener">Buy on pump.fun</a>
+        </div>
+      </div>
+      <p class="fine">Not financial advice.</p>
+    </div>
+    <div class="giant" aria-hidden="true">clawreef</div>
+  </footer>
+
+  <!-- Mobile bottom tabbar -->
+  <nav class="tabbar" aria-label="Pages">
+    <a href="#hero3d" class="on">
+      <img src="/art/clawdie-scout.png" alt="">
+      <span>App</span>
+    </a>
+    <a href="#squad" class="">
+      <img src="/art/clawdie-hunter.png" alt="">
+      <span>Squad</span>
+    </a>
+    <a href="#workflow" class="">
+      <img src="/art/clawdie-guard.png" alt="">
+      <span>Workflow</span>
+    </a>
+    <a href="#burn-sec" class="">
+      <img src="/art/clawdie-copy.png" alt="">
+      <span>Buyback</span>
+    </a>
+  </nav>
+
+  <script>
+    // Ensure all reveal elements animate in smoothly on scroll
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.IntersectionObserver) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+            }
+          });
+        }, { threshold: 0.1 });
+        document.querySelectorAll(".reveal").forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        document.querySelectorAll(".reveal").forEach(function(el) {
+          el.classList.add("in");
+        });
+      }
+    });
+  </script>
+</body>
 </html>
