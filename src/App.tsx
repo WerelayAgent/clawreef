@@ -36,7 +36,7 @@ export function App() {
       critterId: newCardlet.critterId,
       critterName: critter.name,
       action: newCardlet.critterId === 'pinch' ? 'SNIPE' : newCardlet.critterId === 'shell' ? 'PROTECT' : 'BUY',
-      tokenSymbol: 'REEF-AI',
+      tokenSymbol: 'CLAWR-AI',
       tokenName: 'Clawreef Strategy Execution',
       tokenAddress: 'Reef...pump',
       solAmount: 0.50,

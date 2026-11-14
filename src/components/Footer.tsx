@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenScope }) => {
                 Claw<span className="text-teal-400">reef</span>
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-500/10 text-teal-300 border border-teal-500/20">
-                $REEF
+                $CLAWR
               </span>
             </div>
 

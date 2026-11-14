@@ -71,7 +71,7 @@ export const ScopeTerminalModal: React.FC<ScopeTerminalModalProps> = ({
   critters      - List all 5 critters and their current telemetry
   dossier       - Show recent insider wallet catches discovered by Dig
   burn          - Display next 60-min buyback & burn schedule
-  balance       - Inspect connected wallet SOL & $REEF balance
+  balance       - Inspect connected wallet SOL & $CLAWR balance
   cardlets      - Show currently armed Cardlets
   clear         - Clear terminal display buffer
   exit          - Close Scope terminal`,
@@ -100,7 +100,7 @@ export const ScopeTerminalModal: React.FC<ScopeTerminalModalProps> = ({
       newLogs.push({
         id: (Date.now() + 1).toString(),
         type: 'output',
-        text: `CONNECTED ACCOUNT: ${walletAddress}\n  SOL Balance:   ${walletBalance.toFixed(3)} SOL\n  $REEF Balance: 1,500,000 $REEF (Tier: 0% Free Trading Fee)`,
+        text: `CONNECTED ACCOUNT: ${walletAddress}\n  SOL Balance:   ${walletBalance.toFixed(3)} SOL\n  $CLAWR Balance: 1,500,000 $CLAWR (Tier: 0% Free Trading Fee)`,
       });
     } else if (lower === 'burn') {
       newLogs.push({
@@ -109,7 +109,7 @@ export const ScopeTerminalModal: React.FC<ScopeTerminalModalProps> = ({
         text: `[HOURLY BUYBACK ENGINE]
   Next Burn In:    23m 42s
   Accumulated Pot: 14.85 SOL
-  Total Burned:    142.5M $REEF
+  Total Burned:    142.5M $CLAWR
   Protocol Fee:    1% (50% to burn, 50% to treasury)`,
       });
     } else if (lower === 'dossier') {

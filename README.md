@@ -1,4 +1,4 @@
-# Clawreef ($REEF) 🦀🌊
+# Clawreef ($CLAWR) 🦀🌊
 
 > **Autonomous AI Trading Critters on Solana**  
 > Formulate trading strategies in plain English, approve modular cardlets, and execute with sub-second 1-slot precision.
@@ -28,8 +28,8 @@
 ## 🔥 60-Minute Buyback & Burn Engine
 
 - **Trading Fee**: Nominal 1.0% fee on all automated critter executions.
-- **0% Fee Whale Tier**: Holding **1,000,000+ $REEF** unlocks permanent zero-fee trading.
-- **Deflationary Flywheel**: **50% of all generated protocol fees** are automatically swept to buy back and burn `$REEF` every 60 minutes directly on public bonding curves.
+- **0% Fee Whale Tier**: Holding **1,000,000+ $CLAWR** unlocks permanent zero-fee trading.
+- **Deflationary Flywheel**: **50% of all generated protocol fees** are automatically swept to buy back and burn `$CLAWR` every 60 minutes directly on public bonding curves.
 
 ---
 

@@ -359,7 +359,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCardletCreated, onOp
             </div>
             <div>
               <div className="text-sm font-bold text-white font-mono">50% Hourly Burn</div>
-              <div className="text-xs text-[#94a9ab]">Automated $REEF buyback on pump.fun</div>
+              <div className="text-xs text-[#94a9ab]">Automated $CLAWR buyback on pump.fun</div>
             </div>
           </div>
 
@@ -369,7 +369,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCardletCreated, onOp
             </div>
             <div>
               <div className="text-sm font-bold text-white font-mono">0% Fee Tier</div>
-              <div className="text-xs text-[#94a9ab]">Hold 1,000,000 $REEF for zero fee</div>
+              <div className="text-xs text-[#94a9ab]">Hold 1,000,000 $CLAWR for zero fee</div>
             </div>
           </div>
 

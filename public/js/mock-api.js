@@ -1,8 +1,8 @@
 // Mock API layer for Clawreef local & production static hosting
 (function() {
   const originalFetch = window.fetch;
-  const CA = "AfCdvu9Mq4vadfzEGYxcqH1JzWG9UwnMdLrZ9fggpump";
-  const PUMP_URL = "https://pump.fun/coin/" + CA;
+  const CA = null;
+  const PUMP_URL = null;
 
   const mockLive = {
     platform: {
@@ -47,16 +47,16 @@
   };
 
   const mockCoin = {
-    symbol: "REEF",
-    mint: CA,
-    pump: PUMP_URL,
+    symbol: "CLAWR",
+    mint: null,
+    pump: null,
     x: null, // No X!
   };
 
   const mockFeed = {
     events: [
       { seq: 101, who: "hunter", kind: "hunt.find", text: "Dig flagged deployer 4jL... funded 8m prior to launch", t: Date.now() - 14000 },
-      { seq: 102, who: "copy", kind: "copy.fill", text: "Tide mirrored 1.2 SOL on $REEF-AI within slot 31928420", t: Date.now() - 28000 },
+      { seq: 102, who: "copy", kind: "copy.fill", text: "Tide mirrored 1.2 SOL on $CLAWR-AI within slot 31928420", t: Date.now() - 28000 },
       { seq: 103, who: "sniper", kind: "snipe.fill", text: "Pinch pinched $CORAL at $7.4k MC on slot 0", t: Date.now() - 45000 },
       { seq: 104, who: "guard", kind: "guard.exit", text: "Shell locked in 2.1x profit on $JELLY", win: true, t: Date.now() - 62000 },
       { seq: 105, who: "scout", kind: "scout.done", text: "Scuttle detected momentum wave across 14 Telegram groups", t: Date.now() - 85000 },

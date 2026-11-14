@@ -112,7 +112,7 @@ export const BuybackSection: React.FC = () => {
             {/* Metrics Ticker */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-[#16484e]">
               <div className="p-3 rounded-xl bg-[#06181b] border border-[#16484e]/60 font-mono">
-                <span className="text-[10px] text-[#5e7b80] block">TOTAL $REEF BURNED</span>
+                <span className="text-[10px] text-[#5e7b80] block">TOTAL $CLAWR BURNED</span>
                 <span className="text-sm sm:text-base font-bold text-orange-400">
                   {(totalBurned / 1000000).toFixed(1)}M REEF
                 </span>
@@ -143,18 +143,18 @@ export const BuybackSection: React.FC = () => {
               </div>
 
               <h3 className="text-2xl font-black text-white font-sans mb-3">
-                Hold $REEF to Trade with 0% Fee
+                Hold $CLAWR to Trade with 0% Fee
               </h3>
 
               <p className="text-xs text-[#94a9ab] font-mono leading-relaxed mb-6">
-                All platform trades carry a nominal 1% fee. If you hold 1,000,000 or more $REEF in your connected Solana wallet, your fee drops to exactly 0%.
+                All platform trades carry a nominal 1% fee. If you hold 1,000,000 or more $CLAWR in your connected Solana wallet, your fee drops to exactly 0%.
               </p>
 
               <div className="space-y-3 font-mono text-xs mb-6">
                 <div className="p-3 rounded-xl bg-[#07191c] border border-[#16484e]/60 flex items-center justify-between">
                   <div>
                     <span className="text-white font-bold block">Standard Tier</span>
-                    <span className="text-[#5e7b80] text-[11px]">&lt; 1,000,000 $REEF</span>
+                    <span className="text-[#5e7b80] text-[11px]">&lt; 1,000,000 $CLAWR</span>
                   </div>
                   <span className="text-white font-bold text-sm">1.0% Fee</span>
                 </div>
@@ -162,7 +162,7 @@ export const BuybackSection: React.FC = () => {
                 <div className="p-3 rounded-xl bg-[#0b282e] border border-teal-500/40 flex items-center justify-between">
                   <div>
                     <span className="text-teal-300 font-bold block">Reef Whale Tier</span>
-                    <span className="text-teal-400/70 text-[11px]">&gt;= 1,000,000 $REEF</span>
+                    <span className="text-teal-400/70 text-[11px]">&gt;= 1,000,000 $CLAWR</span>
                   </div>
                   <span className="text-emerald-400 font-bold text-sm">0.0% Fee (Free)</span>
                 </div>

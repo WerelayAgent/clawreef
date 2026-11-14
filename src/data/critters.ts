@@ -50,7 +50,7 @@ export const CRITTERS: Critter[] = [
       'Follow smart money cluster B whenever 3 out of 5 buy the same coin within 20s',
       'Mirror Whale #4 buys but sell 25% earlier when volume velocity peaks',
     ],
-    recentAction: 'Copied 1.2 SOL buy on $REEF-AI within slot 31928402',
+    recentAction: 'Copied 1.2 SOL buy on $CLAWR-AI within slot 31928402',
     slotLatency: '1 slot (410ms)',
   },
   {
@@ -139,7 +139,7 @@ export const INITIAL_RECEIPTS: OperationReceipt[] = [
     critterId: 'pinch',
     critterName: 'Pinch',
     action: 'SNIPE',
-    tokenSymbol: 'REEF-AI',
+    tokenSymbol: 'CLAWR-AI',
     tokenName: 'Clawreef Autonomous',
     tokenAddress: 'Reef8Z7...pump',
     solAmount: 0.85,
