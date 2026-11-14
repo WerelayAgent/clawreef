@@ -72,8 +72,6 @@
     </div>
   </header>
 
-  <canvas class="tide" aria-hidden="true" width="241" height="151"></canvas>
-
   <main>
     <!-- THE TIDE POOL STATION -->
     <section class="hero wet">
@@ -97,32 +95,29 @@
         <aside class="console hero-read rise" style="--i:4" aria-label="The squads right now">
           <div class="con-h"><span>Squad readout</span><span class="con-live"><i></i>live</span></div>
           <div class="read" id="live">
-            <div><div class="k">Squads awake</div><div class="v">142</div><div class="s">signed in</div></div>
-            <div><div class="k">Copies filled</div><div class="v">28,420</div><div class="s">on the live market</div></div>
-            <div><div class="k">Launches</div><div class="v">2,588</div><div class="s">in the last 2 h</div></div>
-            <div><div class="k">Bought back</div><div class="v">0.318</div><div class="s">SOL, then burned</div></div>
+            <div><div class="k">Squads awake</div><div class="v skeleton">0</div><div class="s">signed in</div></div>
+            <div><div class="k">Copies filled</div><div class="v skeleton">0</div><div class="s">on the live market</div></div>
+            <div><div class="k">Launches</div><div class="v skeleton">0</div><div class="s">in the last 2 h</div></div>
+            <div><div class="k">Bought back</div><div class="v skeleton">0</div><div class="s">SOL, then burned</div></div>
           </div>
           <div class="con-f"><span>Brain</span><b>Fable 5.2</b><span>Fills</span><b>slot-timed</b></div>
         </aside>
       </div>
 
       <!-- THE 3D VOXEL CRITTER STAGE (Island + Three.js) -->
-      <div class="hero-room hero-3d" id="hero3d" data-layout="row" data-who="hunter" style="--who: #FF7A1A;">
+      <div class="hero-room hero-3d" id="hero3d">
         <div class="h3d-word" id="h3d-word" aria-hidden="true"><span>DIGGING</span></div>
-        <div class="h3d-island" aria-hidden="true"><canvas class="island" aria-hidden="true" width="233" height="28"></canvas></div>
-        <div class="h3d-stage" data-stage=""></div>
-        <div class="say h3d-say" data-say="" style="left: 510px; top: 0.5px; --tail: 210px;">
-          <b data-say-who="" style="color: rgb(255, 122, 26);">Dig</b>
-          <span data-say-text="">Hi! I'm Dig, the lead of this squad. I find wallets and devs worth following, with the evidence. Click any of us to say hi, or write to me below!</span>
-        </div>
+        <div class="h3d-island" aria-hidden="true"></div>
+        <div class="h3d-stage" data-stage></div>
+        <div class="say h3d-say" data-say hidden><b data-say-who>Dig</b><span data-say-text></span></div>
         <div class="h3d-picks">
           <button type="button" data-pick="copy"><b>Tide</b><i>copies</i></button>
           <button type="button" data-pick="sniper"><b>Pinch</b><i>snipes</i></button>
-          <button type="button" data-pick="hunter" class="on"><b>Dig</b><i>hunts</i></button>
+          <button type="button" data-pick="hunter"><b>Dig</b><i>hunts</i></button>
           <button type="button" data-pick="guard"><b>Shell</b><i>guards</i></button>
           <button type="button" data-pick="scout"><b>Scuttle</b><i>scouts</i></button>
         </div>
-        <form class="talk h3d-talk" data-talk="" autocomplete="off">
+        <form class="talk h3d-talk" data-talk autocomplete="off">
           <span class="h3d-to">to</span>
           <input maxlength="600" placeholder="Write to Dig…" aria-label="Write to Dig" autocomplete="off">
           <button class="btn ink" type="submit">Send</button>
@@ -152,92 +147,16 @@
       </div>
       <div class="select" id="select">
         <div class="select-stage">
-          <div class="select-art" id="sel-art">
-            <div class="st st-hunter on" data-role="hunter" style="--c:#FF7A1A">
-              <div class="st-clawd" data-clawd="hunter"></div>
-              <div class="st-chips">
-                <div class="chip-ui" style="--i:0"><i></i><span>Launch buyer</span><b>+0.31 SOL a copy</b></div>
-                <div class="chip-ui" style="--i:1"><i></i><span>Copies checked</span><b>41 · 21 days</b></div>
-                <div class="chip-ui" style="--i:2"><i></i><span>Still trading</span><b>yes, 3 h ago</b></div>
-              </div>
-            </div>
-            <div class="st st-copy" data-role="copy" style="--c:#2F7CFF">
-              <div class="st-clawd" data-clawd="copy"></div>
-              <div class="st-chips">
-                <div class="chip-ui" style="--i:0"><i></i><span>Copied a launch buy</span><b>1 slot after</b></div>
-                <div class="chip-ui" style="--i:1"><i></i><span>Size</span><b>0.1 SOL</b></div>
-                <div class="chip-ui" style="--i:2"><i></i><span>One buy per coin</span><b>per card</b></div>
-              </div>
-            </div>
-            <div class="st st-sniper" data-role="sniper" style="--c:#FF3D5E">
-              <div class="st-clawd" data-clawd="sniper"></div>
-              <div class="st-chips">
-                <div class="chip-ui" style="--i:0"><i></i><span>Dev armed</span><b>next launch</b></div>
-                <div class="chip-ui" style="--i:1"><i></i><span>Bought</span><b>in the launch slot</b></div>
-                <div class="chip-ui" style="--i:2"><i></i><span>Plan</span><b>the first 35 % dip</b></div>
-              </div>
-            </div>
-            <div class="st st-guard" data-role="guard" style="--c:#12B76A">
-              <div class="st-clawd" data-clawd="guard"></div>
-              <div class="st-chips">
-                <div class="chip-ui" style="--i:0"><i></i><span>Exit at 2x</span><b>sold</b></div>
-                <div class="chip-ui" style="--i:1"><i></i><span>Dev is selling</span><b>out, −12 %</b></div>
-                <div class="chip-ui" style="--i:2"><i></i><span>Time exit</span><b>1 h</b></div>
-              </div>
-            </div>
-            <div class="st st-scout" data-role="scout" style="--c:#7B5CFA">
-              <div class="st-clawd" data-clawd="scout"></div>
-              <div class="st-chips">
-                <div class="chip-ui" style="--i:0"><i></i><span>Dev record</span><b>14 launches, 3 bonded</b></div>
-                <div class="chip-ui" style="--i:1"><i></i><span>Launch slot</span><b>9 buyers</b></div>
-                <div class="chip-ui" style="--i:2"><i></i><span>Verdict</span><b>careful</b></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="select-card swap" id="sel-card" style="--c: #FF7A1A;">
+          <div class="select-art" id="sel-art"></div>
+          <div class="select-card" id="sel-card">
             <div class="role-k" id="sel-k">Finds</div>
             <h3 id="sel-name">Dig</h3>
-            <p id="sel-what">Wallets and devs worth following, from 28 days of every launch on pump.fun.</p>
-            <ul id="sel-does">
-              <li>Scores every launch buyer on what copying them made, after costs</li>
-              <li>Checks its own picks on weeks it never saw</li>
-              <li>Shows the rugs, the bots and who still trades</li>
-            </ul>
-            <div class="select-foot">
-              <span class="live" id="sel-live"><i></i>213K wallets scored</span>
-              <a class="btn sm" id="sel-go" href="#hero3d">Talk to Dig →</a>
-            </div>
+            <p id="sel-what"></p>
+            <ul id="sel-does"></ul>
+            <div class="select-foot"><span class="live" id="sel-live"><i></i>—</span><a class="btn sm" id="sel-go" href="#hero3d">Open the desk →</a></div>
           </div>
         </div>
-
-        <div class="select-tabs" id="sel-tabs" role="tablist">
-          <button class="tab on auto" role="tab" style="--c:#FF7A1A">
-            <img src="/art/clawdie-hunter.png" alt="">
-            <span><b>Dig</b><i>Finds</i></span>
-            <em class="bar"></em>
-          </button>
-          <button class="tab auto" role="tab" style="--c:#2F7CFF">
-            <img src="/art/clawdie-copy.png" alt="">
-            <span><b>Tide</b><i>Copies</i></span>
-            <em class="bar"></em>
-          </button>
-          <button class="tab auto" role="tab" style="--c:#FF3D5E">
-            <img src="/art/clawdie-sniper.png" alt="">
-            <span><b>Pinch</b><i>Snipes</i></span>
-            <em class="bar"></em>
-          </button>
-          <button class="tab auto" role="tab" style="--c:#12B76A">
-            <img src="/art/clawdie-guard.png" alt="">
-            <span><b>Shell</b><i>Guards</i></span>
-            <em class="bar"></em>
-          </button>
-          <button class="tab auto" role="tab" style="--c:#7B5CFA">
-            <img src="/art/clawdie-scout.png" alt="">
-            <span><b>Scuttle</b><i>Scouts</i></span>
-            <em class="bar"></em>
-          </button>
-        </div>
+        <div class="select-tabs" id="sel-tabs" role="tablist"></div>
       </div>
     </section>
 
